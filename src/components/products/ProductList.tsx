@@ -14,9 +14,9 @@ const ProductList = ({ products }: Props) => {
       <p className="my-5 text-4xl">Featured Products </p>
       {/* products take map korbo  */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
-        {products?.map((item, i) => (
+        {products?.map((item) => (
           // je item gula pabo oi gulake abr product akare product cart a pathay dibo
-          <ProductCart key={i} product={item} />
+          <ProductCart key={item.id} product={item} />
         ))}
       </div>
     </Container>

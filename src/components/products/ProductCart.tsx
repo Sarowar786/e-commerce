@@ -3,14 +3,16 @@ import Link from "next/link";
 import { ProductType } from "../../../type";
 import SideBar from "./SideBar";
 import ProductPrice from "./ProductPrice";
+import AddToCartBtn from "../AddToCartBtn";
 
 // productList ar product take akhane recieve korbo
 export default function ProductCart({ product }: { product: ProductType }) {
+  
   return (
     <div>
       <div className="bg-cartBg h-72 rounded-xl relative group overflow-hidden  ">
         {/* image */}
-        <Link href={"/product"}>
+        <Link href={`/products/${product?.id}`}>
           <Image
             src={product?.images[0]}
             alt="product image "
@@ -25,9 +27,10 @@ export default function ProductCart({ product }: { product: ProductType }) {
         </Link>
 
         {/* sidebar */}
-        <SideBar />
+        <SideBar product={product} />
       </div>
-        {/* description */}
+      {/* description */}
+      <div className="px-2">
         <div className="mt-2">
           <div>
             <p className="capitalize  ">{product?.category} </p>
@@ -39,7 +42,8 @@ export default function ProductCart({ product }: { product: ProductType }) {
         </div>
 
         {/* add to cart button  */}
+        <AddToCartBtn product={product} className="rounded-full" />
+      </div>
     </div>
-
   );
 }

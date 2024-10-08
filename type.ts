@@ -34,8 +34,17 @@ export interface ProductType {
   }
   
   export interface StateType {
-    shopy: {
+    shofy: {
       cart: ProductType[];
+      favourite: ProductType[];
       userInfo: any;
     };
   }
+
+  export interface Review{
+    comment: string;
+    reviewerName: string;
+    reviewerEmail: string;  // Ensure this matches the actual data structure
+    rating: number;
+  };
+  

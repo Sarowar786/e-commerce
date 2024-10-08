@@ -1,20 +1,50 @@
-import React from 'react'
-import { FiShoppingCart } from 'react-icons/fi'
-import { LuEye } from 'react-icons/lu'
-import { MdFavoriteBorder } from 'react-icons/md'
+'use client'
+import { FiShoppingCart } from "react-icons/fi";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import QuiceView from "../QuiceView";
+import { useDispatch, useSelector } from "react-redux";
+import { ProductType, StateType } from "../../../type";
+import { useEffect, useState } from "react";
+import { addToFavourite } from "../redux/shofySlice";
+import toast from "react-hot-toast";
 
-export default function SideBar() {
+export default function SideBar({product}: {product:ProductType}) {
+  const dispatch = useDispatch();
+  const { favourite } = useSelector((state: StateType) => state?.shofy);
+  const [existingProduct, setExistingProduct] = useState<ProductType | null >(null)
+  useEffect(()=>{
+    const availableProduct =  favourite?.find((item)=> item?.id === product?.id)
+    if(availableProduct){
+      setExistingProduct(availableProduct)
+    }
+    else{
+      // sir ai code ta add kore solve korchilo .
+    setExistingProduct(null)   
+    }
+  },[favourite, product, dispatch,existingProduct])
+
+  const handleFavourite =()=>{
+    dispatch(addToFavourite(product))
+    if(existingProduct){
+      toast.success('Remove to favourite successfully!')
+    }else{
+      toast.success('Added to favourite successfully!')
+
+    }
+  }
   return (
-    <div className='absolute  top-20 left-3 flex flex-col gap-1 transform -translate-x-20 group-hover:translate-x-0 duration-300 z-40'>
-      <button className='p-2 bg-white rounded-full hover:bg-primaryColor hover:text-white duration-300 '>
-        <FiShoppingCart/>
-      </button>
-      <button className='p-2 bg-white rounded-full hover:bg-primaryColor hover:text-white duration-300 '>
-        <LuEye/>
-      </button>
-      <button className='p-2 bg-white rounded-full hover:bg-primaryColor hover:text-white duration-300 '>
-        <MdFavoriteBorder/>
-      </button>
+    <div className="absolute  top-20 left-3 flex flex-col gap-1 transform -translate-x-20 group-hover:translate-x-0 duration-300 z-40">
+      <div className="tooltip tooltip-right" data-tip="Add to cart">
+        <button className=" p-2 bg-white rounded-full hover:bg-primaryColor hover:text-white duration-300 ">
+          <FiShoppingCart />
+        </button>
+      </div>
+      <QuiceView/>
+      <div className="tooltip tooltip-right" data-tip="Favourite">
+        <button onClick={handleFavourite} className="p-2 bg-white rounded-full hover:bg-primaryColor hover:text-white duration-300 ">
+          {existingProduct? (<MdFavorite className="text-primaryColor" />): (<MdFavoriteBorder />)}
+        </button>
+      </div>
     </div>
-  )
+  );
 }
