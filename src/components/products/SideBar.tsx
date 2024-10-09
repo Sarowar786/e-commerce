@@ -5,15 +5,15 @@ import QuiceView from "../QuiceView";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductType, StateType } from "../../../type";
 import { useEffect, useState } from "react";
-import { addToFavourite } from "../redux/shofySlice";
+import { addTofavorite } from "../redux/shofySlice";
 import toast from "react-hot-toast";
 
 export default function SideBar({product}: {product:ProductType}) {
   const dispatch = useDispatch();
-  const { favourite } = useSelector((state: StateType) => state?.shofy);
+  const { favorite } = useSelector((state: StateType) => state?.shofy);
   const [existingProduct, setExistingProduct] = useState<ProductType | null >(null)
   useEffect(()=>{
-    const availableProduct =  favourite?.find((item)=> item?.id === product?.id)
+    const availableProduct =  favorite?.find((item)=> item?.id === product?.id)
     if(availableProduct){
       setExistingProduct(availableProduct)
     }
@@ -21,14 +21,14 @@ export default function SideBar({product}: {product:ProductType}) {
       // sir ai code ta add kore solve korchilo .
     setExistingProduct(null)   
     }
-  },[favourite, product, dispatch,existingProduct])
+  },[favorite, product, dispatch,existingProduct])
 
-  const handleFavourite =()=>{
-    dispatch(addToFavourite(product))
+  const handlefavorite =()=>{
+    dispatch(addTofavorite(product))
     if(existingProduct){
-      toast.success('Remove to favourite successfully!')
+      toast.success('Remove to favorite successfully!')
     }else{
-      toast.success('Added to favourite successfully!')
+      toast.success('Added to favorite successfully!')
 
     }
   }
@@ -40,8 +40,8 @@ export default function SideBar({product}: {product:ProductType}) {
         </button>
       </div>
       <QuiceView/>
-      <div className="tooltip tooltip-right" data-tip="Favourite">
-        <button onClick={handleFavourite} className="p-2 bg-white rounded-full hover:bg-primaryColor hover:text-white duration-300 ">
+      <div className="tooltip tooltip-right" data-tip="favorite">
+        <button onClick={handlefavorite} className="p-2 bg-white rounded-full hover:bg-primaryColor hover:text-white duration-300 ">
           {existingProduct? (<MdFavorite className="text-primaryColor" />): (<MdFavoriteBorder />)}
         </button>
       </div>

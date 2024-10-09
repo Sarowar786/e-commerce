@@ -3,13 +3,13 @@ import { ProductType } from "../../../type";
 
 interface InitialState {
     cart: ProductType[],
-    favourite: ProductType[],
+    favorite: ProductType[],
     userInfo: any
 }
 
 const initialState: InitialState = {
     cart: [],
-    favourite: [],
+    favorite: [],
     userInfo: null
 }
 
@@ -48,17 +48,17 @@ export const shofySlice = createSlice({
             state.cart = [];
         },
 
-        addToFavourite: (state, action) => {
-            const existingProduct = state.favourite.find(item => item.id === action.payload.id);
+        addTofavorite: (state, action) => {
+            const existingProduct = state.favorite.find(item => item.id === action.payload.id);
             if (existingProduct) {
-                state.favourite = state.favourite.filter(item => item.id !== action.payload.id);
+                state.favorite = state.favorite.filter(item => item.id !== action.payload.id);
             } else {
-                state.favourite.push(action.payload);
+                state.favorite.push(action.payload);
             }
         },
 
-        resetFavourite: (state) => {
-            state.favourite = [];
+        resetfavorite: (state) => {
+            state.favorite = [];
         }
     }
 })
@@ -67,8 +67,8 @@ export const {
     addToCart,
     increaseQuantity,
     decreaseQuantity,
-    addToFavourite,
-    resetFavourite,
+    addTofavorite,
+    resetfavorite,
     resetCart,
     removeFromCart
 } = shofySlice.actions;

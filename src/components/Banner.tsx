@@ -12,7 +12,7 @@ export default function Banner() {
             Spracial collection
           </h1>
           <p className="text-3xl font-bold ">Get Start </p>
-          <p className="text-2xl font-medium tracking-wide">Your favourite shopping </p>
+          <p className="text-2xl font-medium tracking-wide">Your favorite shopping </p>
           <button className="w-36 h-10 mt-5 bg-primaryColor text-white capitalize rounded-full ">shop now</button>
         </div>
         <div className="flex items-center justify-center">

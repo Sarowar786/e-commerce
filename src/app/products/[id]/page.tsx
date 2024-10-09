@@ -72,7 +72,7 @@ export default async function SingleProductPage({ params }: Props) {
             You are saving{" "}
             <span className="text-base font-semibold text-green-500">
               <PriceFormat
-                amount={product?.discountPercentage / 100}
+                amount={( product?.price * product?.discountPercentage) / 100}
                 className=""
               />
             </span>{" "}

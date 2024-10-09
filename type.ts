@@ -36,7 +36,7 @@ export interface ProductType {
   export interface StateType {
     shofy: {
       cart: ProductType[];
-      favourite: ProductType[];
+      favorite: ProductType[];
       userInfo: any;
     };
   }
