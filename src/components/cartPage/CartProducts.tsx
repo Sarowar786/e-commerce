@@ -14,7 +14,7 @@ export default function CartProducts() {
       {cart?.length > 0 ? (
         <>
           <h1 className='text-4xl font-bold pb-3'>Shopping Cart</h1>
-          <div className='mt-10 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-1 '>
+          <div className='mt-10 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 '>
             <section className='lg:col-span-7'>
               <div className='divide-y divide-gray-300 border-b-gray-300 border-t-gray-300' >
                 {cart?.map((product:ProductType)=>(
@@ -22,7 +22,7 @@ export default function CartProducts() {
                 ))}
               </div>
             </section>
-            <CartSummery/>
+            <CartSummery cart={cart}/>
           </div>
         </>
       ):(
