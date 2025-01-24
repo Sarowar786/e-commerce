@@ -9,7 +9,7 @@ import { navigation } from "./constant";
 import Link from "next/link";
 
 export default function MobileNavigation() {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const toggleMenu= ()=>{
     setIsOpen(true)
   }

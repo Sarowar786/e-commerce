@@ -25,15 +25,15 @@ export default function Header() {
             </div>
             {/* menu */}
             <div>
-              <div className='hidden lg:inline-flex flex items-center justify-center gap-4 text-white text-lg capitalize'>
+              <div className='hidden lg:inline-flex items-center justify-center gap-4 text-white text-lg capitalize'>
                 {navigation?.map((item ,i )=>(
-                  <Link key={i} href={item.link} className=''> {item.title} </Link>
+                  <Link key={i} href={item.link}> {item.title} </Link>
                 ))}
               </div>
             </div>
             {/* searchbar */}
             <div>
-              <SearchInput/>
+              <SearchInput />
             </div>
             {/* sidebar */}
             <div className='flex items-center gap-4'>

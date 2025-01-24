@@ -2,11 +2,8 @@
 import React, { useState } from "react";
 import { LuEye } from "react-icons/lu";
 import { Dialog, DialogPanel } from "@headlessui/react";
-import Image from "next/image";
-import Link from "next/link";
 import { MdClose } from "react-icons/md";
-import { navigation } from "./constant";
-import { logo } from "@/assets";
+
 
 export default function QuiceView() {
   let [isOpen, setIsOpen] = useState(false);
