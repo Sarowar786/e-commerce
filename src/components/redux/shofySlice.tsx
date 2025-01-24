@@ -1,10 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductType } from "../../../type";
 
+interface UserInfoType {
+    id: string;
+    name: string;
+    email: string;
+  }
+
 interface InitialState {
     cart: ProductType[],
     favorite: ProductType[],
-    userInfo: any
+    userInfo: UserInfoType | null;
 }
 
 const initialState: InitialState = {
