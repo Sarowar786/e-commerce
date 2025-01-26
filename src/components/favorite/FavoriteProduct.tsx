@@ -6,7 +6,6 @@ import { removeFromCart } from "../redux/shofySlice";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import Image from "next/image";
-import PriceFormat from "../products/PriceFormat";
 import { IoClose } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa";
 

@@ -6,7 +6,7 @@ import { MdClose } from "react-icons/md";
 
 
 export default function QuiceView() {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(true);
   };
